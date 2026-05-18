@@ -1,0 +1,196 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ── Auth background animations ──────────────────────────────────────── */
+
+@keyframes authFloat {
+  0%   { transform: translateY(0px) scale(1); }
+  33%  { transform: translateY(-28px) scale(1.03); }
+  66%  { transform: translateY(14px) scale(0.97); }
+  100% { transform: translateY(0px) scale(1); }
+}
+
+@keyframes authPulseGlow {
+  0%, 100% { opacity: 0.12; }
+  50%       { opacity: 0.22; }
+}
+
+@keyframes authTwinkle {
+  0%, 100% { opacity: 0.08; transform: scale(0.8); }
+  50%       { opacity: 0.85; transform: scale(1.4); }
+}
+
+@keyframes authWaveMove {
+  0%   { transform: translateX(0px);   opacity: 0.18; }
+  50%  { transform: translateX(-18px); opacity: 0.28; }
+  100% { transform: translateX(0px);   opacity: 0.18; }
+}
+
+/* Floating orbs: float + glow pulse layered */
+.auth-orb {
+  animation:
+    authFloat     16s ease-in-out infinite,
+    authPulseGlow  9s ease-in-out infinite;
+}
+
+/* Star particles: twinkle at staggered speeds */
+.auth-particle {
+  animation: authTwinkle 4s ease-in-out infinite;
+}
+
+/* Wave SVG layers: slow horizontal drift */
+.auth-wave {
+  animation: authWaveMove 12s ease-in-out infinite;
+}
+
+/* Card ambient glow */
+.auth-card-glow {
+  box-shadow:
+    0 0 0 1px rgba(59, 130, 246, 0.08),
+    0 0 60px rgba(59, 130, 246, 0.14),
+    0 25px 50px rgba(0, 0, 0, 0.5);
+}
+
+/* Respect prefers-reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+  .auth-orb,
+  .auth-particle,
+  .auth-wave {
+    animation: none;
+  }
+}
+
+/* ── Dashboard background utilities ─────────────────────────────────────── */
+
+/* Subtle dot-grid texture for dashboard pages */
+.dashboard-grid-bg {
+  background-image: radial-gradient(circle, rgba(148, 163, 184, 0.045) 1px, transparent 1px);
+  background-size: 28px 28px;
+}
+
+/* Base glass card used across all dashboard cards */
+.neon-card {
+  position: relative;
+  background: rgba(2, 6, 23, 0.50);     /* slate-950/50 */
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(30, 41, 59, 0.80); /* slate-800/80 */
+  border-radius: 1rem;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+.neon-card:hover {
+  border-color: rgba(59, 130, 246, 0.28);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25), 0 0 28px rgba(59, 130, 246, 0.10);
+}
+
+/* Active sidebar link — neon left-tab style */
+.sidebar-link-active {
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.14) 0%, rgba(99, 102, 241, 0.08) 100%);
+  border-left: 2px solid #3b82f6;
+  color: #93c5fd !important;  /* blue-300 */
+  padding-left: calc(0.75rem - 2px); /* compensate for border */
+  text-shadow: 0 0 12px rgba(59, 130, 246, 0.4);
+}
+.sidebar-link-active svg {
+  color: #60a5fa;   /* blue-400 */
+}
+
+/* Hero card wave-glow inner background */
+.dashboard-wave-bg {
+  position: relative;
+  overflow: hidden;
+}
+.dashboard-wave-bg::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    repeating-linear-gradient(
+      -52deg,
+      transparent,
+      transparent 38px,
+      rgba(59, 130, 246, 0.028) 38px,
+      rgba(59, 130, 246, 0.028) 39px
+    ),
+    repeating-linear-gradient(
+      38deg,
+      transparent,
+      transparent 55px,
+      rgba(147, 51, 234, 0.018) 55px,
+      rgba(147, 51, 234, 0.018) 56px
+    );
+  pointer-events: none;
+  border-radius: inherit;
+}
+
+/* Metric card icon color variants */
+.icon-blue   { background: rgba(59, 130, 246, 0.12); color: #60a5fa; border: 1px solid rgba(59, 130, 246, 0.22); }
+.icon-green  { background: rgba(16, 185, 129, 0.12); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.22); }
+.icon-purple { background: rgba(147, 51, 234, 0.12); color: #c084fc; border: 1px solid rgba(147, 51, 234, 0.22); }
+.icon-orange { background: rgba(249, 115, 22, 0.12); color: #fb923c; border: 1px solid rgba(249, 115, 22, 0.22); }
+.icon-red    { background: rgba(239, 68, 68, 0.12);  color: #f87171; border: 1px solid rgba(239, 68, 68, 0.22); }
+.icon-cyan   { background: rgba(6, 182, 212, 0.12);  color: #22d3ee; border: 1px solid rgba(6, 182, 212, 0.22); }
+.icon-pink   { background: rgba(236, 72, 153, 0.12); color: #f472b6; border: 1px solid rgba(236, 72, 153, 0.22); }
+.icon-indigo { background: rgba(99, 102, 241, 0.12); color: #a5b4fc; border: 1px solid rgba(99, 102, 241, 0.22); }
+
+/* Slow float animation for optional decorative elements */
+@keyframes dashFloat {
+  0%, 100% { transform: translateY(0px);  }
+  50%       { transform: translateY(-8px); }
+}
+.dash-float {
+  animation: dashFloat 6s ease-in-out infinite;
+}
+
+/* Neon pulse glow for status dots or accents */
+@keyframes neonPulse {
+  0%, 100% { box-shadow: 0 0 4px currentColor; }
+  50%       { box-shadow: 0 0 10px currentColor, 0 0 20px currentColor; }
+}
+.neon-pulse {
+  animation: neonPulse 2.5s ease-in-out infinite;
+}
+
+/* Trend up/down indicator animation */
+@keyframes trendBounce {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-2px); }
+}
+.trend-up   { animation: trendBounce 2s ease-in-out infinite; color: #34d399; }
+.trend-down { color: #f87171; }
+
+@layer base {
+  body {
+    @apply font-sans bg-slate-950 text-slate-100 antialiased;
+  }
+}
+
+@layer components {
+  /* Reusable card style */
+  .card {
+    @apply bg-slate-900 border border-slate-800 rounded-2xl;
+  }
+
+  /* Input base style */
+  .input-field {
+    @apply w-full bg-slate-800 border border-slate-700 text-slate-100 
+           placeholder-slate-500 rounded-xl px-4 py-3 text-sm
+           focus:outline-none focus:border-brand-500 focus:ring-1 focus:ring-brand-500
+           transition duration-200;
+  }
+
+  /* Primary button */
+  .btn-primary {
+    @apply w-full bg-brand-500 hover:bg-brand-600 text-white font-semibold 
+           py-3 px-6 rounded-xl transition duration-200 
+           focus:outline-none focus:ring-2 focus:ring-brand-400 focus:ring-offset-2 focus:ring-offset-slate-900
+           disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  /* Label style */
+  .form-label {
+    @apply block text-sm font-medium text-slate-300 mb-1.5;
+  }
+}
