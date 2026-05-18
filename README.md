@@ -4,6 +4,12 @@ A full-stack Human Resource Management System built with React + Vite (frontend)
 
 ---
 
+## Live Demo
+
+🚀 **Netlify Live Link:** https://myhrms123.netlify.app
+
+---
+
 ## Tech Stack
 
 | Layer | Technology |
