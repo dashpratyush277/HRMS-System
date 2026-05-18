@@ -6,7 +6,17 @@ A full-stack Human Resource Management System built with React + Vite (frontend)
 
 ## Live Demo
 
-🚀 **Netlify Live Link:** https://myhrms123.netlify.app
+<p align="center">
+  <a href="https://myhrms123.netlify.app" target="_blank">
+    <img src="https://img.shields.io/badge/Live%20Demo-Visit%20Website-brightgreen?style=for-the-badge&logo=netlify" alt="Live Demo Button"/>
+  </a>
+
+  <a href="https://drive.google.com/file/d/1AbetLF4JEkA9RJld5DAplc5j26iVrv5q/view?usp=drive_link" target="_blank">
+    <img src="https://img.shields.io/badge/Project%20Report-View%20Report-blue?style=for-the-badge&logo=googledrive" alt="Project Report Button"/>
+  </a>
+</p>
+
+---
 
 ---
 
